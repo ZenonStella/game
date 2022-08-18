@@ -1,7 +1,7 @@
 <?php
 require 'Class/Character.php';
 require 'Class/Hero.php';
-
+require 'Class/Orc.php';
 
 ?>
 <!DOCTYPE html>
@@ -17,8 +17,12 @@ require 'Class/Hero.php';
 <body>
     <?php
     $hero = new Hero(1000, 0, 'épées doubles', 150, 'côte de mailles', 100);
+    $orc = new Orc(600, 0);
     $hero->attacked(250);
-    $hero->attacked(300);
+    $hero->attacked($orc->attack());
+  
+
+    // $hero->attacked(250);
     ?>
 
 </body>
