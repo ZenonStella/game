@@ -15,10 +15,7 @@ class Hero extends Character
         $this->setShield($shield);
         $this->setShieldValue($shieldValue);
 
-        echo '<p>Vous venez de créer un Héro!</p>';
-        echo '<p>Votre hero possède ' . $this->getHealth() . ' points de vie et ' . $this->getRage() . ' points de rage</p>';
-        echo '<p>Votre arme ' . $this->getWeapon() . ' inflige ' . $this->getWeaponDamage() . ' dégats</p>';
-        echo '<p>Votre armure ' . $this->getShield() . ' absorbe ' . $this->getShieldValue() . ' dégats</p>';
+        $this->welcomeMessage();
     }
 
     public function setWeapon($value)
@@ -52,5 +49,18 @@ class Hero extends Character
     public function getShieldValue()
     {
         return $this->_shieldValue;
+    }
+    public function welcomeMessage()
+    {
+        echo '<p>Vous venez de créer un Héro!</p>';
+        echo '<p>Votre hero possède ' . $this->getHealth() . ' points de vie et ' . $this->getRage() . ' points de rage</p>';
+        echo '<p>Votre arme ' . $this->getWeapon() . ' inflige ' . $this->getWeaponDamage() . ' dégats</p>';
+        echo '<p>Votre armure ' . $this->getShield() . ' absorbe ' . $this->getShieldValue() . ' dégats</p>';
+    }
+    public function attacked($value)
+    {
+        $degats = $value - $this->getShieldValue();
+        $this->setHealth($this->getHealth() - $degats);
+        echo '<p>Votre hero a perdu ' . $degats . ' points de vie, il lui en reste ' . $this->getHealth() . '</p>';
     }
 }
