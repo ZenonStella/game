@@ -1,16 +1,23 @@
 <?php
 
-class Character {
-    private $_health;
-    private $_rage;
+class Character
+{
+    private int $_health;
+    private int $_rage;
+
+    public function __construct($health, $rage)
+    {
+        $this->setHealth($health);
+        $this->setRage($rage);
+    }
 
     public function setHealth($health)
     {
-       $this->_health = $health;
+        $this->_health = $health;
     }
     public function getHealth()
     {
-       return $this->_health;
+        return $this->_health;
     }
     public function setRage($rage)
     {
