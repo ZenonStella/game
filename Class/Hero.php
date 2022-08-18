@@ -6,7 +6,6 @@ class Hero extends Character
     private $_weaponDamage;
     private $_shield;
     private $_shieldValue;
-    private $_shieldDurabilite;
 
     public function __construct($health, $rage, $weapon, $weaponDamage, $shield, $shieldValue)
     {
@@ -15,7 +14,6 @@ class Hero extends Character
         $this->setWeaponDamage($weaponDamage);
         $this->setShield($shield);
         $this->setShieldValue($shieldValue);
-        $this->setShieldDurabilite(100);
         $this->welcomeMessage();
     }
 
@@ -51,14 +49,7 @@ class Hero extends Character
     {
         return $this->_shieldValue;
     }
-    public function setShieldDurabilite($value)
-    {
-        $this->_shieldDurabilite = $value;
-    }
-    public function getShieldDurabilite()
-    {
-        return $this->_shieldDurabilite;
-    }
+
     public function welcomeMessage()
     {
         echo '<div>';
@@ -72,13 +63,18 @@ class Hero extends Character
     {
         $degats = $value - $this->getShieldValue();
         $degats = ($degats > 0) ? $degats : 0;
-        $this->setShieldDurabilite($this->getShieldDurabilite() - ($degats / 10));
         $this->setHealth($this->getHealth() - $degats);
         $this->addRage();
-        echo '<p>La durabilité de votre armure baisse à ' . $this->getShieldDurabilite() . '</p>';
+        $newShield = $this->getShieldValue() - ceil($value * 0.1);
+        $newShield = ($newShield < 0) ? 0 : $newShield;
+        $this->setShieldValue($newShield);
         echo '<hr><p>L\'orc attaque, votre hero prend ' . $value . ' points d\'attaque mais votre armure en absorbe ' . $this->getShieldValue() . '</p>';
         echo '<p>Votre hero a perdu ' . $degats . ' points de vie, il lui en reste ' . $this->getHealth() . ' et il a ' . $this->getRage() . ' points de rage</p>';
-        // echo '<p>votre perds 5 points de vitalitée, il lui en reste ' . $this->getShieldValue() .'</p>';
+        if ($newShield == 0) {
+            echo '<p>Votre armure est cassée !</p>';
+        } else {
+            echo '<p>La durabilité de votre armure baisse à ' . $newShield . '</p>';
+        }
     }
     public function addRage()
     {
