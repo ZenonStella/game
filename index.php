@@ -16,9 +16,9 @@ require 'Class/Orc.php';
 
 <body>
     <?php
-    $hero = new Hero(1000, 0, 'épées doubles', 150, 'côte de mailles', 100);
-    $orc = new Orc(600, 0);
-    $hero->attacked(250);
+    $hero = new Hero(2000, 0, 'épées doubles', 250, 'côte de mailles', 600);
+    $orc = new Orc(500, 0);
+    // $hero->attacked(250);
     $hero->attacked($orc->attack());
   
 
