@@ -66,7 +66,7 @@ class Hero extends Character
         // $this->setShieldValue($this->getShieldValue() - 5);
         $this->setHealth($this->getHealth() - $degats);
         $this->addRage();
-        echo '<p>L\'orc attaque, votre hero prend ' . $value . ' points d\'attaque mais votre armure en absorbe ' . $this->getShieldValue() . '</p>';
+        echo '<hr><p>L\'orc attaque, votre hero prend ' . $value . ' points d\'attaque mais votre armure en absorbe ' . $this->getShieldValue() . '</p>';
         echo '<p>Votre hero a perdu ' . $degats . ' points de vie, il lui en reste ' . $this->getHealth() . ' et il a ' . $this->getRage() . ' points de rage</p>';
         // echo '<p>votre perds 5 points de vitalitée, il lui en reste ' . $this->getShieldValue() .'</p>';
     }

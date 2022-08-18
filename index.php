@@ -22,6 +22,7 @@ require 'Class/Orc.php';
     $hero->getHealth();
     while ($hero->getHealth() >= 0) {
         if ($orc->getHealth() <= 0) {
+            echo '<p>Votre orc est mort, le hero est sort victorieux de cet affrontement</p>';
             exit;
         } else {
             $hero->attacked($orc->attack());
