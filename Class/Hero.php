@@ -61,6 +61,12 @@ class Hero extends Character
     {
         $degats = $value - $this->getShieldValue();
         $this->setHealth($this->getHealth() - $degats);
-        echo '<p>Votre hero a perdu ' . $degats . ' points de vie, il lui en reste ' . $this->getHealth() . '</p>';
+        $this->addRage();
+        echo '<p>Votre hero a perdu ' . $degats . ' points de vie, il lui en reste ' . $this->getHealth() . ' et il a ' . $this->getRage() . ' points de rage</p>';
+    }
+    public function addRage()
+    {
+        $rage = $this->getRage() + 30;
+        $this->setRage($rage);
     }
 }

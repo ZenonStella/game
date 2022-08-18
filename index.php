@@ -18,6 +18,7 @@ require 'Class/Hero.php';
     <?php
     $hero = new Hero(1000, 0, 'épées doubles', 150, 'côte de mailles', 100);
     $hero->attacked(250);
+    $hero->attacked(300);
     ?>
 
 </body>
