@@ -19,8 +19,10 @@ require 'Class/Orc.php';
     $hero = new Hero(2000, 0, 'épées doubles', 250, 'côte de mailles', 600);
     $orc = new Orc(500, 0);
     // $hero->attacked(250);
-    $hero->attacked($orc->attack());
-  
+    $hero->getHealth() ;
+    while ($hero->getHealth() >= 0) {
+        $hero->attacked($orc->attack());
+    };
 
     // $hero->attacked(250);
     ?>
