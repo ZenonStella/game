@@ -2,8 +2,8 @@
 
 class Character
 {
-    private int $_health;
-    private int $_rage;
+    private $_health;
+    private $_rage;
 
     public function __construct($health, $rage)
     {
