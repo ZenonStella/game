@@ -7,33 +7,47 @@ class Hero extends Character
     private $_shield;
     private $_shieldValue;
 
-    public function setWeapon($weapon)
+    public function __construct($health, $rage, $weapon, $weaponDamage, $shield, $shieldValue)
     {
-        $this->_weapon = $weapon;
+        parent::__construct($health, $rage);
+        $this->setWeapon($weapon);
+        $this->setWeaponDamage($weaponDamage);
+        $this->setShield($shield);
+        $this->setShieldValue($shieldValue);
+
+        echo '<p>Vous venez de créer un Héro!</p>';
+        echo '<p>Votre hero possède ' . $this->getHealth() . ' points de vie et ' . $this->getRage() . ' points de rage</p>';
+        echo '<p>Votre arme ' . $this->getWeapon() . ' inflige ' . $this->getWeaponDamage() . ' dégats</p>';
+        echo '<p>Votre armure ' . $this->getShield() . ' absorbe ' . $this->getShieldValue() . ' dégats</p>';
+    }
+
+    public function setWeapon($value)
+    {
+        $this->_weapon = $value;
     }
     public function getWeapon()
     {
         return $this->_weapon;
     }
-    public function setWeaponDamage($weaponDamage)
+    public function setWeaponDamage($value)
     {
-        $this->_weaponDamage = $weaponDamage;
+        $this->_weaponDamage = $value;
     }
     public function getWeaponDamage()
     {
         return $this->_weaponDamage;
     }
-    public function setShield($shield)
+    public function setShield($value)
     {
-        $this->_shield = $shield;
+        $this->_shield = $value;
     }
     public function getShield()
     {
         return $this->_shield;
     }
-    public function setShieldValue($shieldValue)
+    public function setShieldValue($value)
     {
-        $this->_shieldValue = $shieldValue;
+        $this->_shieldValue = $value;
     }
     public function getShieldValue()
     {
