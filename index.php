@@ -27,7 +27,6 @@ require 'Class/Orc.php';
         } else {
             $hero->attacked($orc->attack());
             if ($hero->getRage() >= 100) {
-
                 $orc->setHealth($orc->getHealth() - $hero->getWeaponDamage());
                 echo '<p>le hero passe à l\'attaque et inflige ' . $hero->getWeaponDamage() . ' degats à l\'orc.</p>';
                 echo '<p>L\'orc a ' . $orc->getHealth() . ' points de vie</p>';

@@ -6,6 +6,7 @@ class Hero extends Character
     private $_weaponDamage;
     private $_shield;
     private $_shieldValue;
+    private $_qtRage = 30;
 
     public function __construct($health, $rage, $weapon, $weaponDamage, $shield, $shieldValue)
     {
@@ -64,12 +65,22 @@ class Hero extends Character
         $degats = $value - $this->getShieldValue();
         $degats = ($degats > 0) ? $degats : 0;
         $this->setHealth($this->getHealth() - $degats);
-        $this->addRage();
+
+        echo '<hr><p>L\'orc attaque, votre hero prend ' . $value . ' points d\'attaque mais votre armure en absorbe ' . $this->getShieldValue() . '</p>';
+        if ($this->getHealth() <= 0) {
+            echo '<p>Vous etes mort!</p>';
+            $this->setRage(0);
+        } else {
+        echo '<p>Votre hero a perdu ' . $degats . ' points de vie, il lui en reste ' . $this->getHealth() . ' et il a ' . $this->getRage() . ' points de rage</p>';
+            $this->addRage();
+        }
+        $this->damageToShield($value);
+    }
+    public function damageToShield($value)
+    {
         $newShield = $this->getShieldValue() - ceil($value * 0.1);
         $newShield = ($newShield < 0) ? 0 : $newShield;
         $this->setShieldValue($newShield);
-        echo '<hr><p>L\'orc attaque, votre hero prend ' . $value . ' points d\'attaque mais votre armure en absorbe ' . $this->getShieldValue() . '</p>';
-        echo '<p>Votre hero a perdu ' . $degats . ' points de vie, il lui en reste ' . $this->getHealth() . ' et il a ' . $this->getRage() . ' points de rage</p>';
         if ($newShield == 0) {
             echo '<p>Votre armure est cassée !</p>';
         } else {
@@ -78,7 +89,7 @@ class Hero extends Character
     }
     public function addRage()
     {
-        $rage = $this->getRage() + 30;
+        $rage = $this->getRage() + $this->_qtRage;
         $this->setRage($rage);
     }
 }
