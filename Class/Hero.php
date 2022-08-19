@@ -68,13 +68,18 @@ class Hero extends Character
 
         echo '<hr><p>L\'orc attaque, votre hero prend ' . $value . ' points d\'attaque mais votre armure en absorbe ' . $this->getShieldValue() . '</p>';
         if ($this->getHealth() <= 0) {
-            echo '<p>Vous etes mort!</p>';
+            echo '<p>Votre hero est mort!</p>';
             $this->setRage(0);
         } else {
         echo '<p>Votre hero a perdu ' . $degats . ' points de vie, il lui en reste ' . $this->getHealth() . ' et il a ' . $this->getRage() . ' points de rage</p>';
             $this->addRage();
         }
         $this->damageToShield($value);
+    }
+    public function attack()
+    {
+        $this->setWeaponDamage(rand(50, 200));   
+        return $this->getWeaponDamage();
     }
     public function damageToShield($value)
     {
@@ -84,7 +89,7 @@ class Hero extends Character
         if ($newShield == 0) {
             echo '<p>Votre armure est cassée !</p>';
         } else {
-            echo '<p>La durabilité de votre armure baisse à ' . $newShield . '</p>';
+            echo '<p>La durabilité de l\'armure du hero baisse à ' . $newShield . '</p>';
         }
     }
     public function addRage()

@@ -17,7 +17,7 @@ require 'Class/Orc.php';
 <body>
     <?php
     $hero = new Hero(2000, 0, 'épées doubles', 250, 'côte de mailles', 600);
-    $orc = new Orc(500, 0);
+    $orc = new Orc(500, 0, 100, 100);
     // $hero->attacked(250);
     $hero->getHealth();
     while ($hero->getHealth() >= 0) {
@@ -26,6 +26,7 @@ require 'Class/Orc.php';
             exit;
         } else {
             $hero->attacked($orc->attack());
+            $orc->attacked($hero->attack());
             if ($hero->getRage() >= 100) {
                 $orc->setHealth($orc->getHealth() - $hero->getWeaponDamage());
                 echo '<p>le hero passe à l\'attaque et inflige ' . $hero->getWeaponDamage() . ' degats à l\'orc.</p>';
